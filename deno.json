@@ -1,7 +1,8 @@
 {
   "tasks": {
     "ingest": "deno run -A ./src/ingest.ts",
-    "serve": "deno serve -A --parallel --port 2485 ./src/serve.ts"
+    "serve": "deno serve -A --parallel --port 2485 ./src/serve.ts",
+    "serve-plc": "deno serve -A --parallel --port 2582 ./src/serve-plc.ts"
   },
   "imports": {
     "@db/sqlite": "jsr:@db/sqlite@^0.12.0"
