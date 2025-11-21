@@ -9,6 +9,12 @@ export default {
   fetch(req, _info): Response {
     const pathname = decodeURIComponent(new URL(req.url).pathname);
 
+    if (pathname.startsWith("/_health")) {
+      return new Response("OK", {
+        headers: { "content-type": "text/plain" },
+      });
+    }
+
     if (pathname.startsWith("/did:")) {
       const did = pathname.substring(1);
       const entry = statement.value<[entry: string]>(did)?.pipe(it => it[0]);

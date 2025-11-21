@@ -4,6 +4,12 @@ export default {
   fetch(req, _info) {
     const pathname = new URL(req.url).pathname;
 
+    if (pathname.startsWith("/_health")) {
+      return new Response("OK", {
+        headers: { "content-type": "text/plain" },
+      });
+    }
+
     if (pathname.startsWith("/did:")) {
       // resolve did:plc to zplc number
       const id = db.didToZplc(pathname.substring(1));
